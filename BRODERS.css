@@ -1,0 +1,633 @@
+/* ============================================================
+   BRODERS — Bar & Cervecería Artesanal
+   Hoja de estilos principal
+   Paleta: negro / carbón + texto blanco
+   Enfoque: Mobile-first con Media Queries
+   ============================================================ */
+
+/* ---------- Variables ---------- */
+:root{
+  --negro:        #0b0b0b;   /* fondo general */
+  --carbon:       #141414;   /* fondo secciones */
+  --carbon-2:     #1c1c1c;   /* header / paneles */
+  --gris-linea:   #2b2b2b;   /* bordes suaves */
+  --blanco:       #ffffff;
+  --texto:        #f2f2f2;
+  --texto-suave:  #cfcfcf;
+  --gris-oscuro:  #8a8a8a;
+
+  --font-titulo: 'Anton', 'Arial Narrow', Impact, sans-serif;
+  --font-cuerpo: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+
+  --radius: 2px;
+  --header-h: 64px;
+  --max-w: 1200px;
+}
+
+/* ---------- Reset básico ---------- */
+*, *::before, *::after{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body{
+  margin: 0;
+  background: var(--negro);
+  color: var(--texto);
+  font-family: var(--font-cuerpo);
+  font-size: 16px;
+  line-height: 1.6;
+  overflow-x: hidden;           /* evita scroll horizontal */
+}
+img{ max-width: 100%; display: block; }
+a{ color: inherit; text-decoration: none; }
+ul{ list-style: none; margin: 0; padding: 0; }
+button{ font-family: inherit; cursor: pointer; }
+
+h1,h2,h3{ margin: 0; font-family: var(--font-titulo); letter-spacing: .04em; text-transform: uppercase; }
+
+/* Offset para que el header fijo no tape los títulos al navegar */
+section{ scroll-margin-top: var(--header-h); }
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.header{
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: var(--header-h);
+  background: rgba(12,12,12,.94);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--gris-linea);
+  z-index: 100;
+}
+.header__inner{
+  max-width: var(--max-w);
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Logo */
+.header__logo{ display: flex; align-items: center; }
+.header__logo img{ height: 44px; width: auto; }
+
+/* Navegación desktop (oculta en mobile) */
+.header__nav{ display: none; }
+
+/* Icono usuario */
+.header__user{
+  margin-left: auto;
+  width: 44px; height: 44px;
+  display: grid; place-items: center;
+  background: transparent;
+  border: none;
+  color: var(--blanco);
+  border-radius: 50%;
+  transition: background .2s;
+}
+.header__user:hover{ background: rgba(255,255,255,.10); }
+.header__user svg{ width: 22px; height: 22px; }
+
+/* Botón hamburguesa (mobile) */
+.header__burger{
+  width: 40px; height: 40px;
+  display: flex; flex-direction: column;
+  justify-content: center; gap: 5px;
+  background: transparent; border: none;
+  padding: 0 8px;
+}
+.header__burger span{
+  display: block; height: 2px; width: 100%;
+  background: var(--blanco); border-radius: 2px;
+  transition: transform .25s, opacity .25s;
+}
+
+/* En mobile: hamburguesa izq · logo centro · usuario der */
+@media (max-width: 899px){
+  .header__burger{ order: 1; }
+  .header__logo{ order: 2; margin: 0 auto; }
+  .header__user{ order: 3; margin-left: 0; }
+}
+
+/* ============================================================
+   DRAWER (panel lateral mobile)
+   ============================================================ */
+.drawer-overlay{
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.6);
+  z-index: 110;
+  opacity: 0; transition: opacity .3s;
+}
+.drawer-overlay.is-visible{ opacity: 1; }
+
+.drawer{
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  width: min(78vw, 320px);
+  background: var(--carbon-2);
+  border-right: 1px solid var(--gris-linea);
+  z-index: 120;
+  padding: 20px 22px;
+  transform: translateX(-100%);
+  transition: transform .3s ease;
+  display: flex; flex-direction: column;
+  overflow-y: auto;
+}
+.drawer.is-open{ transform: translateX(0); }
+
+.drawer__head{
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding-bottom: 18px;
+  border-bottom: 1px solid var(--gris-linea);
+}
+.drawer__logo{ height: 30px; width: auto; }
+.drawer__close{
+  background: transparent; border: none;
+  color: var(--blanco); font-size: 32px; line-height: 1;
+  padding: 0 4px;
+}
+.drawer__nav{
+  display: flex; flex-direction: column;
+  gap: 6px; margin-top: 24px;
+}
+.drawer__nav a{
+  font-family: var(--font-titulo);
+  font-size: 1.35rem;
+  letter-spacing: .05em;
+  color: var(--blanco);
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+  transition: color .2s, padding-left .2s;
+}
+.drawer__nav a:hover{ color: #bbb; padding-left: 6px; }
+
+/* ============================================================
+   BOTÓN BASE
+   ============================================================ */
+.btn{
+  display: inline-block;
+  background: var(--blanco);
+  color: #111;
+  font-family: var(--font-titulo);
+  font-size: 1rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 15px 52px;
+  border: none;
+  border-radius: var(--radius);
+  transition: background .2s, transform .15s;
+}
+.btn:hover{ background: #e2e2e2; }
+.btn:active{ transform: scale(.98); }
+
+/* ============================================================
+   INICIO (Hero)
+   ============================================================ */
+.hero{
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: calc(var(--header-h) + 40px) 20px 60px;
+  overflow: hidden;
+}
+.hero__bg{
+  position: absolute;
+  inset: 0;
+  background-image: url('./imagenes/p1_img3.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(.55);
+  z-index: 0;
+}
+.hero__content{
+  position: relative; 
+  z-index: 1;
+  max-width: var(--max-w);
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+.hero__title{
+  font-size: clamp(3.2rem, 16vw, 7.5rem);
+  line-height: .95;
+  color: var(--blanco);
+  margin-bottom: 18px;
+}
+.hero__text{
+  max-width: 620px;
+  margin: 0 auto 28px;
+  color: #eaeaea;
+  font-size: 1rem;
+}
+
+/* ============================================================
+   ESTRUCTURA DE SECCIONES
+   ============================================================ */
+.section{
+  padding: 64px 20px;
+  background: var(--carbon);
+}
+.section__title{
+  font-size: clamp(2rem, 8vw, 3.4rem);
+  color: var(--blanco);
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* ============================================================
+   MENÚ GASTRONÓMICO
+   ============================================================ */
+.section--menu{ background: var(--negro); }
+.menu-grid{ max-width: var(--max-w); margin: 0 auto; display: grid; gap: 32px; }
+
+/* Mobile: dos columnas como en el mockup (pág. 9),
+   con textos legibles y sin generación de scroll horizontal */
+@media (max-width: 699px){
+  .menu-grid{
+    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+    gap: 14px 12px;
+    align-items: start;
+  }
+  .menu-col{ display: flex; flex-direction: column; min-width: 0; }
+  .menu-col--b{ margin-top: 0; }
+  .menu-cat{ min-width: 0; }
+  .menu-cat__title{ font-size: .92rem; letter-spacing: .03em; }
+  .menu-list li{ font-size: .74rem; padding: 5px 0; gap: 4px; min-width: 0; }
+  .menu-list__name{ min-width: 0; overflow-wrap: anywhere; }
+  .menu-list__price{ font-size: .74rem; white-space: nowrap; }
+  .menu-list__dots{ min-width: 6px; }
+}
+
+.menu-cat{ margin-bottom: 26px; }
+.menu-cat__title{
+  font-size: 1.3rem;
+  color: var(--blanco);
+  margin-bottom: 12px;
+  letter-spacing: .1em;
+}
+
+/* Fila: nombre · puntos · precio */
+.menu-list li{
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 8px 0;
+  font-size: 1rem;
+  color: var(--texto-suave);
+}
+.menu-list__name{ flex: 0 1 auto; }
+.menu-list__price{ flex: 0 0 auto; color: var(--blanco); font-weight: 600; }
+.menu-list__dots{
+  flex: 1 1 auto;
+  border-bottom: 2px dotted #6a6a6a;
+  transform: translateY(-4px);
+  min-width: 18px;
+}
+
+/* ============================================================
+   MERCHANDISING (Remera) dentro del MENÚ
+   ============================================================ */
+.merch{
+  margin-top: 32px;
+  padding-top: 26px;
+  border-top: 1px solid var(--gris-linea);
+  text-align: center;
+}
+.merch__img{
+  width: 80%;
+  max-width: 320px;
+  margin: 0 auto 16px;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #000;
+}
+.merch__img img{
+  width: 80%; height: 80%;
+  object-fit: cover;            /* la remera no se deforma */
+}
+.merch__name{
+  font-family: var(--font-titulo);
+  font-size: 1.4rem;
+  letter-spacing: .08em;
+  color: var(--blanco);
+  margin-bottom: 6px;
+}
+.merch__price{
+  color: var(--texto-suave);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 18px;
+}
+.merch__btn{
+  display: inline-block;
+  background: var(--blanco);
+  color: #111;
+  font-family: var(--font-titulo);
+  font-size: 1rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 13px 48px;
+  border: none;
+  border-radius: 999px;          /* bordes redondeados */
+  transition: background .2s, transform .15s;
+}
+.merch__btn:hover{ background: #e2e2e2; }
+.merch__btn:active{ transform: scale(.98); }
+.merch__msg{
+  margin: 14px 0 0;
+  min-height: 20px;
+  font-size: .9rem;
+  color: #6ee7a8;
+}
+
+/* En computadora: la remera se apoya en el espacio libre del lado derecho */
+@media (min-width: 700px){
+  .merch{ text-align: left; }
+  .merch__img{ margin-left: 0; }
+  .merch__btn{ padding: 14px 54px; }
+}
+
+/* ============================================================
+   SOBRE NOSOTROS
+   ============================================================ */
+.about{ 
+  max-width: var(--max-w); 
+  margin: 0 auto; 
+  display: grid; 
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px; 
+  padding: 60px 30px;
+}
+
+.video-texto__video video{
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius);
+}
+
+.about__text{ 
+  color: var(--texto-suave); 
+  font-size: 1rem; 
+  margin-bottom: 22px;
+  line-height: 1.6;
+}
+
+@media (max-width: 700px) {
+  .about{ 
+    grid-template-columns: 1fr; 
+  }
+}
+
+/* ============================================================
+   GALERÍA
+   ============================================================ */
+.section--gallery{ background: var(--carbon); }
+.gallery{
+  max-width: var(--max-w);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.gallery__item{
+  margin: 0;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: #000;
+}
+.gallery__item img{
+  width: 100%; height: 100%;
+  object-fit: cover;            /* sin deformación */
+  transition: transform .4s;
+}
+.gallery__item:hover img{ transform: scale(1.06); }
+
+/* ============================================================
+   RESERVAS
+   ============================================================ */
+.section--reservas{ background: var(--negro); }
+.section__title--reservas{ text-align: left; max-width: var(--max-w); margin-left: auto; margin-right: auto; }
+.reservas{ max-width: var(--max-w); margin: 0 auto; display: grid; gap: 28px; }
+
+/* Mapa: oculto en mobile (no aparece en el mockup celular) */
+.reservas__map{ display: none; }
+
+.reservas__form{ display: grid; gap: 18px; }
+.field{ display: grid; gap: 6px; }
+.field label{
+  font-family: var(--font-titulo);
+  font-size: .9rem; letter-spacing: .1em;
+  color: var(--blanco);
+}
+.field input, .field select{
+  width: 100%;
+  background: transparent;
+  color: var(--texto);
+  border: 1px solid #666;
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  font-size: .95rem;
+  font-family: var(--font-cuerpo);
+  appearance: none;
+}
+.field input:focus, .field select:focus{
+  outline: none; border-color: var(--blanco);
+}
+.field select{
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='white' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+.field select option{ background: var(--carbon-2); color: var(--texto); }
+.field input[type="date"]{ color-scheme: dark; }
+
+/* Errores */
+.field__error{ color: #ff6b6b; font-size: .78rem; min-height: 0; }
+.field.has-error input, .field.has-error select{ border-color: #ff6b6b; }
+
+.btn--submit{ justify-self: start; margin-top: 6px; }
+
+/* Mensaje de confirmación */
+.form-msg{
+  margin: 4px 0 0;
+  font-size: .92rem;
+  min-height: 22px;
+}
+.form-msg.is-ok{ color: #6ee7a8; }
+.form-msg.is-err{ color: #ff6b6b; }
+.msg-card{
+  border: 1px solid #2f6b4a;
+  background: rgba(46,120,80,.14);
+  color: #c9f5db;
+  padding: 14px 16px;
+  border-radius: var(--radius);
+  line-height: 1.55;
+}
+
+/* ============================================================
+   CONTACTO
+   ============================================================ */
+.section--contacto{ position: relative; padding: 0; overflow: hidden; }
+.contacto__bg{
+  position: absolute; inset: 0;
+  background: url('../assets/contacto.jpg') center/cover no-repeat;
+  filter: brightness(.45);
+  z-index: 0;
+}
+.contacto__inner{
+  position: relative; z-index: 1;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 72px 20px;
+  display: grid;
+  gap: 0;
+}
+.contacto__box{ padding: 38px 34px; }
+.contacto__box--claro{ background: var(--blanco); color: #111; }
+.contacto__box--oscuro{ background: rgba(10,10,10,.82); color: var(--blanco); border: 1px solid rgba(255,255,255,.12); }
+.contacto__title{ font-size: 1.5rem; margin-bottom: 16px; }
+.contacto__list li{ padding: 4px 0; font-size: .98rem; }
+.contacto__list a{ transition: opacity .2s; }
+.contacto__list a:hover{ opacity: .65; text-decoration: underline; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer{
+  background: #060606;
+  border-top: 1px solid var(--gris-linea);
+  text-align: center;
+  padding: 22px 16px;
+  font-size: .82rem;
+  color: var(--gris-oscuro);
+}
+
+/* ============================================================
+   TABLET  (>= 700px)
+   ============================================================ */
+@media (min-width: 700px){
+  .hero__text{ font-size: 1.1rem; }
+
+  /* Galería: 3 columnas en tablet */
+  .gallery{ grid-template-columns: repeat(3, 1fr); gap: 12px; }
+
+  /* Menú: 2 columnas */
+  .menu-grid{ grid-template-columns: 1fr 1fr; gap: 40px; }
+
+  /* Contacto: bloques uno al lado del otro */
+  .contacto__inner{ grid-template-columns: 1fr 1fr; }
+
+  .btn--submit{ justify-self: start; }
+}
+
+/* ============================================================
+   DESKTOP (>= 900px)
+   ============================================================ */
+@media (min-width: 900px){
+  :root{ --header-h: 72px; }
+
+  /* Header desktop: logo izq · nav centro · usuario der */
+  .header__burger{ display: none; }
+  .header__logo{ order: 0; margin: 0; }
+  .header__nav{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-left: 46px;
+  }
+  .header__nav a{
+    font-family: var(--font-titulo);
+    font-size: .95rem;
+    letter-spacing: .14em;
+    color: #e8e8e8;
+    transition: color .2s;
+  }
+  .header__nav a:hover{ color: var(--blanco); }
+  .header__user{ order: 0; margin-left: auto; }
+
+  .section{ padding: 90px 48px; }
+
+  /* INICIO: contenido alineado a la izquierda, como el mockup */
+  .hero{ padding-left: 6%; padding-right: 6%; align-items: center; }
+  .hero__content{ text-align: left; max-width: 720px; margin: 0; }
+  .hero__title{ font-size: clamp(4.5rem, 8vw, 8rem); }
+  .hero__text{ margin-left: 0; max-width: 560px; }
+
+  .section__title{
+    text-align: left;
+    font-size: clamp(2.6rem, 4.5vw, 4rem);
+    max-width: var(--max-w);
+    margin-left: auto; margin-right: auto;
+  }
+
+  /* SOBRE NOSOTROS: imagen izq · texto der */
+  .about{ grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 60px; align-items: center; }
+  .about__img{ aspect-ratio: 4 / 3; height: auto; align-self: stretch; min-height: 320px; }
+  .about__content{ min-width: 0; }
+  .about__text{ font-size: 1.15rem; line-height: 1.85; }
+
+  /* GALERÍA: 4 columnas x 2 filas */
+  .gallery{ grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+  /* RESERVAS: mapa izq · formulario der */
+  .reservas{ grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .reservas__map{
+    display: block;
+    border: 1px solid var(--gris-linea);
+    border-radius: var(--radius);
+    overflow: hidden;
+    background: #000;
+  }
+  .reservas__map img{ width: 100%; height: auto; display: block; }
+  .reservas__map-link{
+    display: block;
+    padding: 12px 16px;
+    font-family: var(--font-titulo);
+    font-size: .82rem; letter-spacing: .1em;
+    background: var(--carbon-2);
+    color: var(--blanco);
+  }
+  .reservas__map-link:hover{ background: #262626; }
+
+  .btn--submit{ justify-self: start; }
+
+  /* CONTACTO: bloques uno al lado del otro, alineados al centro-derecha */
+  .contacto__bg {
+    position: absolute; 
+    inset: 0;
+    background-image: url("./imagenes/p6_img2.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    z-index: 0;
+  }
+  .contacto__inner{ grid-template-columns: 1fr 1fr; gap: 0; padding: 110px 48px; }
+  .contacto__box{ padding: 46px 40px; }
+}
+
+/* ============================================================
+   Pantallas grandes
+   ============================================================ */
+@media (min-width: 1200px){
+  .hero__title{ font-size: clamp(5rem, 7vw, 8.5rem); }
+}
+
+/* ============================================================
+   Accesibilidad: reducir animaciones
+   ============================================================ */
+@media (prefers-reduced-motion: reduce){
+  *{ transition: none !important; animation: none !important; }
+  html{ scroll-behavior: auto; }
+}

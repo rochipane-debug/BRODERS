@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="BRODERS - Bar y cervecería artesanal en Nordelta. Hamburguesas caseras, cervezas tiradas y vista al agua." />
+  <title>BRODERS | Bar &amp; Cervecería Artesanal - Nordelta</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="BRODERS.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER / NAVEGACIÓN
+       Desktop: logo izq + links + icono usuario der
+       Mobile:  hamburguesa izq + logo centro + icono usuario der
+  ============================================================= -->
+  <header class="header" id="header">
+    <div class="header__inner">
+
+      <!-- Botón hamburguesa (solo mobile) -->
+      <button class="header__burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="drawer">
+        <span></span><span></span><span></span>
+      </button>
+
+      <!-- Logo -->
+      <a href="#inicio" class="header__logo" aria-label="BRODERS - Inicio">
+        <img src="C:\Users\sumar\OneDrive\Escritorio\BRODERS\imagenes\logo broders.jpg" alt="BRODERS" />
+      </a>
+
+      <!-- Navegación desktop -->
+      <nav class="header__nav" aria-label="Navegación principal">
+        <a href="#menu">MENÚ</a>
+        <a href="#sobre">SOBRE NOSOTROS</a>
+        <a href="#galeria">GALERÍA</a>
+        <a href="#reservas">RESERVAS</a>
+        <a href="#contacto">CONTACTO</a>
+      </nav>
+
+      <!-- Icono de usuario (decorativo, sin login real) -->
+      <button class="header__user" aria-label="Cuenta de usuario" title="Cuenta de usuario (no disponible)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
+          <circle cx="12" cy="8" r="4" />
+          <path d="M4 20c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       PANEL LATERAL MOBILE (drawer)
+  ============================================================= -->
+  <div class="drawer-overlay" id="drawerOverlay" hidden></div>
+  <aside class="drawer" id="drawer" aria-hidden="true" aria-label="Menú de navegación móvil">
+    <div class="drawer__head">
+      <img src="C:\Users\sumar\OneDrive\Escritorio\BRODERS\imagenes\logo broders.jpg" alt="BRODERS" class="drawer__logo" />
+      <button class="drawer__close" id="drawerClose" aria-label="Cerrar menú">&times;</button>
+    </div>
+    <nav class="drawer__nav">
+      <a href="#inicio">INICIO</a>
+      <a href="#menu">MENÚ</a>
+      <a href="#sobre">SOBRE<br>NOSOTROS</a>
+      <a href="#souvenir">SOUVENIR</a>
+      <a href="#galeria">GALERÍA</a>
+      <a href="#reservas">RESERVAS</a>
+      <a href="#contacto">CONTACTO</a>
+    </nav>
+  </aside>
+
+  <main>
+
+    <!-- ============================================================
+         INICIO (Home) — PDF pág. 1 (desktop) / pág. 7 (mobile)
+    ============================================================= -->
+    <section id="inicio" class="hero">
+      <div class="hero__bg" 
+           style="background-image: url('./imagenes/p1_img3.jpeg');"
+           role="img" 
+           aria-label="Ambiente gastronómico de BRODERS">
+      </div>
+      <div class="hero__content">
+        <h1 class="hero__title">BRODERS</h1>
+        <p class="hero__text">
+          BRODERS es un bar y cervecería artesanal en Nordelta que combina
+          hamburguesas caseras, variedad de cervezas tiradas y una vista
+          privilegiada al agua. Con una propuesta joven, descontracturada e
+          inclusiva, se destaca como una &ldquo;Segunda Casa&rdquo; ideal para
+          encontrarse y compartir entre amigos.
+        </p>
+        <a href="#menu" class="btn">MENÚ</a>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         MENÚ GASTRONÓMICO — PDF pág. 2 (desktop) / pág. 9 (mobile)
+    ============================================================= -->
+    <section id="menu" class="section section--menu">
+      <h2 class="section__title">MENÚ</h2>
+
+      <div class="menu-grid">
+
+        <!-- Columna izquierda -->
+        <div class="menu-col menu-col--a">
+
+          <div class="menu-cat">
+            <h3 class="menu-cat__title">ENTRADAS</h3>
+            <ul class="menu-list">
+              <li><span class="menu-list__name">Papas Jors</span><span class="menu-list__dots"></span><span class="menu-list__price">$8.500</span></li>
+              <li><span class="menu-list__name">Papas Broders</span><span class="menu-list__dots"></span><span class="menu-list__price">$12.000</span></li>
+              <li><span class="menu-list__name">Papas Cochinas</span><span class="menu-list__dots"></span><span class="menu-list__price">$12.500</span></li>
+              <li><span class="menu-list__name">Chicken fingers</span><span class="menu-list__dots"></span><span class="menu-list__price">$10.400</span></li>
+              <li><span class="menu-list__name">Bocaditos de muzzarella</span><span class="menu-list__dots"></span><span class="menu-list__price">$15.000</span></li>
+              <li><span class="menu-list__name">Empanadas fritas</span><span class="menu-list__dots"></span><span class="menu-list__price">$10.500</span></li>
+              <li><span class="menu-list__name">Nachos</span><span class="menu-list__dots"></span><span class="menu-list__price">$19.000</span></li>
+              <li><span class="menu-list__name">Picada frita</span><span class="menu-list__dots"></span><span class="menu-list__price">$25.000</span></li>
+              <li><span class="menu-list__name">Picada vegana</span><span class="menu-list__dots"></span><span class="menu-list__price">$12.900</span></li>
+            </ul>
+          </div>
+
+          <div class="menu-cat">
+            <h3 class="menu-cat__title">HAMBURGUESAS</h3>
+            <ul class="menu-list">
+              <li><span class="menu-list__name">Broders doble</span><span class="menu-list__dots"></span><span class="menu-list__price">$16.000</span></li>
+              <li><span class="menu-list__name">L&rsquo;Alibro</span><span class="menu-list__dots"></span><span class="menu-list__price">$12.500</span></li>
+              <li><span class="menu-list__name">L&rsquo;Alibro doble</span><span class="menu-list__dots"></span><span class="menu-list__price">$15.400</span></li>
+              <li><span class="menu-list__name">La Pretenciosa</span><span class="menu-list__dots"></span><span class="menu-list__price">$13.500</span></li>
+              <li><span class="menu-list__name">La Pretenciosa doble</span><span class="menu-list__dots"></span><span class="menu-list__price">$16.100</span></li>
+              <li><span class="menu-list__name">Big Broder simple</span><span class="menu-list__dots"></span><span class="menu-list__price">$13.200</span></li>
+              <li><span class="menu-list__name">Big Broder doble</span><span class="menu-list__dots"></span><span class="menu-list__price">$15.400</span></li>
+              <li><span class="menu-list__name">La Classic</span><span class="menu-list__dots"></span><span class="menu-list__price">$13.200</span></li>
+              <li><span class="menu-list__name">La de Poio</span><span class="menu-list__dots"></span><span class="menu-list__price">$12.500</span></li>
+            </ul>
+          </div>
+
+          <div class="menu-cat">
+            <h3 class="menu-cat__title">ENSALADAS Y OTROS</h3>
+            <ul class="menu-list">
+              <li><span class="menu-list__name">Obvio salad</span><span class="menu-list__dots"></span><span class="menu-list__price">$16.000</span></li>
+              <li><span class="menu-list__name">Obvio salad con pollo</span><span class="menu-list__dots"></span><span class="menu-list__price">$12.500</span></li>
+              <li><span class="menu-list__name">Caesar salad</span><span class="menu-list__dots"></span><span class="menu-list__price">$15.400</span></li>
+              <li><span class="menu-list__name">Caesar salad con pollo</span><span class="menu-list__dots"></span><span class="menu-list__price">$13.500</span></li>
+            </ul>
+          </div>
+
+          <div class="menu-cat">
+            <h3 class="menu-cat__title">PANCHOS</h3>
+            <ul class="menu-list">
+              <li><span class="menu-list__name">Pinche tu pancho</span><span class="menu-list__dots"></span><span class="menu-list__price">$9.500</span></li>
+              <li><span class="menu-list__name">Pancho Criollo</span><span class="menu-list__dots"></span><span class="menu-list__price">$12.500</span></li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Columna derecha -->
+        <div class="menu-col menu-col--b">
+
+          <div class="menu-cat">
+            <h3 class="menu-cat__title">POSTRES</h3>
+            <ul class="menu-list">
+              <li><span class="menu-list__name">Chocotorta</span><span class="menu-list__dots"></span><span class="menu-list__price">$5.500</span></li>
+              <li><span class="menu-list__name">Flan</span><span class="menu-list__dots"></span><span class="menu-list__price">$6.000</span></li>
+            </ul>
+          </div>
+
+          <div class="menu-cat">
+            <h3 class="menu-cat__title">BEBIDAS SIN ALCOHOL</h3>
+            <ul class="menu-list">
+              <li><span class="menu-list__name">Agua con gas</span><span class="menu-list__dots"></span><span class="menu-list__price">$3.200</span></li>
+              <li><span class="menu-list__name">Agua Saborizada</span><span class="menu-list__dots"></span><span class="menu-list__price">$3.500</span></li>
+              <li><span class="menu-list__name">Gaseosas</span><span class="menu-list__dots"></span><span class="menu-list__price">$3.600</span></li>
+            </ul>
+          </div>
+
+          <div class="menu-cat">
+            <h3 class="menu-cat__title">TRAGOS</h3>
+            <ul class="menu-list">
+              <li><span class="menu-list__name">Fernet</span><span class="menu-list__dots"></span><span class="menu-list__price">$12.000</span></li>
+              <li><span class="menu-list__name">Jarra de Fernet</span><span class="menu-list__dots"></span><span class="menu-list__price">$22.500</span></li>
+              <li><span class="menu-list__name">Campari</span><span class="menu-list__dots"></span><span class="menu-list__price">$11.400</span></li>
+              <li><span class="menu-list__name">Mojito</span><span class="menu-list__dots"></span><span class="menu-list__price">$13.500</span></li>
+              <li><span class="menu-list__name">Aperol Spritz</span><span class="menu-list__dots"></span><span class="menu-list__price">$13.100</span></li>
+            </ul>
+          </div>
+
+          <div class="menu-cat">
+            <h3 class="menu-cat__title">CERVEZAS</h3>
+            <ul class="menu-list">
+              <li><span class="menu-list__name">Media pinta</span><span class="menu-list__dots"></span><span class="menu-list__price">$6.000</span></li>
+              <li><span class="menu-list__name">Jarra de birra</span><span class="menu-list__dots"></span><span class="menu-list__price">$16.500</span></li>
+              <li><span class="menu-list__name">Cerveza sin tacc</span><span class="menu-list__dots"></span><span class="menu-list__price">$11.400</span></li>
+              <li><span class="menu-list__name">Lata de cerveza</span><span class="menu-list__dots"></span><span class="menu-list__price">$6.400</span></li>
+            </ul>
+            <!-- ===== MERCHANDISING: Remera BRODERS (ocupa el espacio libre) ===== -->
+          <div class="merch">
+            <figure class="merch__img">
+              <img src="C:\Users\sumar\OneDrive\Escritorio\BRODERS\imagenes\remera BRODERS.jpeg" alt="Remera negra BRODERS con logo" loading="lazy" />
+            </figure>
+            <h3 class="merch__name">REMERA BRODERS</h3>
+            <p class="merch__price">$25.000</p>
+            <button type="button"
+                    class="merch__btn"
+                    id="comprarRemeraBtn"
+                    data-producto="Remera BRODERS"
+                    data-precio="25000">
+              COMPRAR
+            </button>
+            <p class="merch__msg" id="merchMsg" role="status" aria-live="polite"></p>
+          </div>
+          <!-- ===== FIN MERCHANDISING ===== -->
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SOBRE NOSOTROS — PDF pág. 3 (desktop) / pág. 10 (mobile)
+    ============================================================= -->
+    <section id="sobre" class="section section--about">
+      <div class="about">
+
+        <div class="video-texto__video">
+          <video controls preload="metadata" width="500">
+            <source 
+            src="./videos/video%20BRODERS.mp4" 
+            type="video/mp4">
+             tu navegador no puede reproducir este video.
+          </video>
+        </div>
+
+        <div class="about__content">
+          <p class="about__text">
+            En BRODERS creamos un espacio pensado como tu
+            &ldquo;Segunda Casa&rdquo;: un punto de encuentro relajado
+            en Nordelta para disfrutar entre amigos y familia.
+            Combinamos la mejor cerveza artesanal tirada con
+            hamburguesas caseras de calidad y una hermosa vista
+            frente al agua, ofreciendo una experiencia cercana,
+            auténtica e inclusiva para todos.
+          </p>
+          <a href="#galeria" class="btn">GALERÍA</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         GALERÍA — PDF pág. 4 (desktop) / pág. 11 (mobile)
+    ============================================================= -->
+    <section id="galeria" class="section section--gallery">
+      <h2 class="section__title">GALERÍA</h2>
+      <div class="gallery" id="gallery">
+        <figure class="gallery__item"><img src="C:\Users\sumar\OneDrive\Escritorio\BRODERS\imagenes\p4_img1.jpeg" alt="Barman preparando un trago en BRODERS" loading="lazy" /></figure>
+        <figure class="gallery__item"><img src="C:\Users\sumar\OneDrive\Escritorio\BRODERS\imagenes\p4_img2.jpeg" alt="Hamburguesa con cheddar y bacon" loading="lazy" /></figure>
+        <figure class="gallery__item"><img src="C:\Users\sumar\OneDrive\Escritorio\BRODERS\imagenes\p4_img3.jpeg" alt="Detalle de cerveza artesanal" loading="lazy" /></figure>
+        <figure class="gallery__item"><img src="C:\Users\sumar\OneDrive\Escritorio\BRODERS\imagenes\p4_img4.jpeg" alt="Clienta disfrutando una cerveza" loading="lazy" /></figure>
+        <figure class="gallery__item"><img src="C:\Users\sumar\OneDrive\Escritorio\BRODERS\imagenes\p4_img5.jpeg" alt="Cerveza y papas cargadas" loading="lazy" /></figure>
+        <figure class="gallery__item"><img src="C:\Users\sumar\OneDrive\Escritorio\BRODERS\imagenes\p4_img6.jpeg" alt="Banda en vivo en el local" loading="lazy" /></figure>
+        <figure class="gallery__item"><img src="C:\Users\sumar\OneDrive\Escritorio\BRODERS\imagenes\p4_img7.jpeg" alt="Cartel de neón de BRODERS" loading="lazy" /></figure>
+        <figure class="gallery__item"><img src="C:\Users\sumar\OneDrive\Escritorio\BRODERS\imagenes\p3_img2.jpeg" alt="Público bajo las luces del patio" loading="lazy" /></figure>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         RESERVAS — PDF pág. 5 (desktop) / pág. 12 (mobile)
+    ============================================================= -->
+    <section id="reservas" class="section section--reservas">
+      <h2 class="section__title section__title--reservas">RESERVAS</h2>
+      <div class="reservas">
+
+        <!-- Mapa (solo desktop) -->
+        <div class="reservas__map">
+          <img src="C:\Users\sumar\OneDrive\Escritorio\BRODERS\imagenes\p5_img2.png" alt="Ubicación de BRODERS en Tigre, Nordelta" />
+          <a class="reservas__map-link" href="https://maps.google.com/?q=Av+Del+Puerto+925+Tigre" target="_blank" rel="noopener">
+            AV DEL PUERTO 925 - TIGRE
+          </a>
+        </div>
+
+        <!-- Formulario de reservas -->
+        <form class="reservas__form" id="reservaForm" novalidate>
+
+          <div class="field">
+            <label for="fecha">FECHA</label>
+            <input type="date" id="fecha" name="fecha" required />
+            <small class="field__error" data-error-for="fecha"></small>
+          </div>
+
+          <div class="field">
+            <label for="ubicacion">UBICACIÓN</label>
+            <select id="ubicacion" name="ubicacion" required>
+              <option value="" disabled selected>Elegí una opción</option>
+              <option value="ADENTRO">ADENTRO</option>
+              <option value="AFUERA">AFUERA</option>
+            </select>
+            <small class="field__error" data-error-for="ubicacion"></small>
+          </div>
+
+          <div class="field">
+            <label for="personas">NÚMERO DE PERSONAS</label>
+            <select id="personas" name="personas" required>
+              <option value="" disabled selected>Elegí la cantidad</option>
+              <option value="1">1 PERSONA</option>
+              <option value="2">2 PERSONAS</option>
+              <option value="3">3 PERSONAS</option>
+              <option value="4">4 PERSONAS</option>
+              <option value="5">5 PERSONAS</option>
+              <option value="6">6 PERSONAS</option>
+              <option value="7">7 PERSONAS</option>
+              <option value="8">8 PERSONAS</option>
+              <option value="9">9 PERSONAS</option>
+              <option value="10+">10 O MÁS</option>
+            </select>
+            <small class="field__error" data-error-for="personas"></small>
+          </div>
+
+          <div class="field">
+            <label for="hora">HORA</label>
+            <select id="hora" name="hora" required>
+              <option value="" disabled selected>Elegí un horario</option>
+              <option value="1">13:00</option>
+              <option value="2">14:00</option>
+              <option value="3">15:00</option>
+              <option value="4">16:00</option>
+              <option value="5">17:00</option>
+              <option value="6">18:00</option>
+              <option value="7">19:00</option>
+              <option value="8">20:00</option>
+              <option value="9">21:00</option>
+              <option value="10">22:00</option>
+              <option value="11">23:00</option>
+            </select>
+            <small class="field__error" data-error-for="hora"></small>
+          </div>
+
+          <button type="submit" class="btn btn--submit">SOLICITAR RESERVA</button>
+
+          <!-- Mensaje de confirmación -->
+          <p class="form-msg" id="formMsg" role="status" aria-live="polite"></p>
+        </form>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         CONTACTO — PDF pág. 6 (desktop) / pág. 13 (mobile)
+    ============================================================= -->
+    <section id="contacto" class="section section--contacto">
+      <div class="contacto__bg"
+           style="background-image: url('./imagenes/p6_img2.jpeg');" 
+           role="img" 
+           aria-label="Interior de BRODERS">
+      </div>
+      <div class="contacto__inner">
+
+        <!-- Bloque blanco: CONTACTO -->
+        <div class="contacto__box contacto__box--claro">
+          <h2 class="contacto__title">CONTACTO</h2>
+          <ul class="contacto__list">
+            <li><a href="mailto:broders@gmail.com">BRODERS@GMAIL.COM</a></li>
+            <li><a href="tel:+541131883629">1131883629</a></li>
+            <li><a href="https://instagram.com/brodersbrewery" target="_blank" rel="noopener">@BRODERSBREWERY</a></li>
+          </ul>
+        </div>
+
+        <!-- Bloque oscuro: INFORMACIÓN -->
+        <div class="contacto__box contacto__box--oscuro">
+          <h2 class="contacto__title">INFORMACIÓN</h2>
+          <ul class="contacto__list">
+            <li><a href="https://maps.google.com/?q=Av+Del+Puerto+925+Tigre" target="_blank" rel="noopener">AV DEL PUERTO 925 - TIGRE</a></li>
+            <li>ABIERTO TODOS LOS DÍAS HÁBILES MENOS LOS LUNES</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Pie de página -->
+  <footer class="footer">
+    <p>© <span id="year"></span> BRODERS — Bar &amp; Cervecería Artesanal · Nordelta, Argentina</p>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
